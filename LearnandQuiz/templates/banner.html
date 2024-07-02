@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="my-2 mx-2">
+    <a href="/addBanner"><button type="button" class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Add Banner</button></a>
+</div>
+{% if banner %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container d-flex justify-content-center shadow-lg p-2 mb-5 bg-white rounded">
+            <h1 class="title">
+                <b>Banner</b>
+            </h1>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for banner in banner %}
+        <div class="col">
+            <div class="card h-100 mb-3 shadow-lg mb-5 bg-white rounded">
+                <img src="{{banner.image.url}}" class="card-img-top" alt="Image" style="height: 15rem; width: 100%;">
+                <div class="container d-flex justify-content-center my-1">
+                    <div class="container mx-5"><a href="{% url 'surebanner' banner.id %}"><button type="button"
+                                class="btn btn-danger btn-lg px-4">Delete</button></a></div>
+                    <div class="container me-5"><a href="{% url 'editbanner' banner.id %}"><button type="button"
+                                class="btn btn-primary btn-lg px-4">Edit</button></a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+{% else %}
+<div class="card">
+    <div class="card-body justify-content-center" style="height: 758px; width: 100%;">
+        <div class="container d-flex justify-content-center">
+            <h1><b>No banner available</b></h1>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <a class="nav-link text-white" href="/"><button type="button"
+                        class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Ok</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

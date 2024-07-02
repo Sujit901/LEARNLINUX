@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/static/logo-color.png" />
+    <title>Linux education</title>
+    <link src="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css"
+        integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    {% include "navbar.html" %}
+    {% block content %}
+    {% if banner %}
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" style="height: 40rem;">
+            {% for banner in banner %}
+            <div class="carousel-item active" interval="5000">
+                <img src="{{banner.image.url}}" class="d-block w-100" style="height: 40rem; width: 100%;" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+    {% if ads %}
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container d-flex justify-content-center shadow-lg p-2 my-5 mb-5 bg-white rounded">
+                <h1 class="title">
+                    <b>
+                        Advertisement
+                    </b>
+                </h1>
+            </div>
+        </div>
+    </section>
+    <!-- {% for ads in ads %}
+    <div>
+    <marquee behavior="scroll" direction="right" scrollamount="30">
+        <img src="{{ads.image.url}}" class="d-block w-100" style="height: 20rem;" alt="Image">
+    </marquee>
+    </div>
+    {% endfor %} -->
+    <div id="carouselExampleInterval" class="carousel slide carousel-fade shadow-lg mb-5 bg-white rounded"
+        data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner" style="height: 20rem;">
+            {% for ads in ads %}
+            <div class="carousel-item active">
+                <img src="{{ads.image.url}}" class="d-block w-100" style="height: 20rem;" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container shadow-lg p-2 my-5 mb-5 bg-white rounded">
+                <h1 class="title d-flex justify-content-center">
+                    <b>
+                        About Linux
+                    </b>
+                </h1>
+                <marquee behavior="scroll" direction="left" scrollamount="12">
+                    <h2 class="title">
+                        Linux is a free and open-source operating system based on Unix. It is flexible,
+                        customizable, and widely used in servers, supercomputers, and other computing environments.
+                        Linux is known for its stability, security, and large software ecosystem.
+                    </h2>
+                </marquee>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    {% if linux %}
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container d-flex justify-content-center shadow-lg p-2 mb-5 my-5 bg-white rounded">
+                <h1 class="title">
+                    <b>Linux Distros</b>
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="hero is-primary">
+        <form action="{% url 'linuxsearch' %}" method="GET">
+            <div class="input-group d-flex justify-content-center">
+                <div class="form-outline">
+                    <input type="search" id="form1" name="search" placeholder="Search Linux" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </section>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for linux in linux %}
+            <div class="col">
+                <div class="card h-100 mb-3 shadow-lg mb-5 bg-white rounded">
+                    <img src="{{linux.image.url}}" class="card-img-top" alt="Image" style="height: 15rem; width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><b>{{linux.name}}</b></h5>
+                        <p class="card-text" style="text-align: justify;">{{linux.description}}</p>
+                    </div>
+                    <a href="{% url 'course' linux.name %}"><button type="button" class="btn btn-primary btn-lg px-4"
+                            style="width: 100%;">Learn</button></a>
+                    <div class="card-footer border-secondary">
+                        <small class="text-muted">{{linux.update}}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+    {% endblock %}
+    {% include "footer.html" %}
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

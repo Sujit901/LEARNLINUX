@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="mx-2 my-2">
+    <a href="/addAds"><button type="button" class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Add ADS</button></a>
+</div>
+{% if ads %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container d-flex justify-content-center shadow-lg p-2 mb-5 bg-white rounded">
+            <h1 class="title">
+                <b>Advertisement</b>
+            </h1>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<div class="container">
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for ads in ads %}
+        <div class="col">
+            <div class="card h-100 mb-3 shadow-lg mb-5 bg-white rounded">
+                <img src="{{ads.image.url}}" class="card-img-top" alt="Image" style="height: 15rem; width: 100%;">
+                <div class="container d-flex justify-content-center my-1">
+                    <div class="container mx-5"><a href="{% url 'sureads' ads.id %}"><button type="button"
+                                class="btn btn-danger btn-lg px-4">Delete</button></a></div>
+                    <div class="container me-5"><a href="{% url 'editads' ads.id %}"><button type="button"
+                                class="btn btn-primary btn-lg px-4">Edit</button></a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% else %}
+<div class="card">
+    <div class="card-body justify-content-center" style="height: 758px; width: 100%;">
+        <div class="container d-flex justify-content-center">
+            <h1><b>No linux available</b></h1>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <h2>Come back latter.</h2>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <a class="nav-link text-white" href="/"><button type="button"
+                        class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Ok</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

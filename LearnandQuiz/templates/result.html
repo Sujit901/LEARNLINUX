@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="vh-100" style="background-color: rgb(234, 234, 234)">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 2rem">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <div class="d-flex align-items-center mb-3 pb-1">
+                  <span class="border border-dark" style="
+                          height: 25px;
+                          width: 25px;
+                          border-radius: 50%;
+                          background-color: rgb(234, 234, 234);
+                        "></span>
+                </div>
+                <div class="container">
+                  <div class="card-columns" style="padding: 10px; margin: 20px">
+                    <div class="card" align="centre" style="width: 32rem; border: 5px black solid">
+                      <img class="card-img-top"
+                        src="http://kmit.in/emagazine/wp-content/uploads/2018/02/karnataka-results.jpg"
+                        alt="Card image cap" />
+                      <div class="card-body">
+                        <h5 class="card-title">Score: {{score}}</h5>
+
+                        <p class="card-text">Percentage: {{percent}}%</p>
+                        <p class="card-text">
+                          Time Taken: {{time}} seconds
+                        </p>
+                        <p class="card-text">
+                          Correct answers: {{correct}}
+                        </p>
+                        <p class="card-text">
+                          Incorrect answers: {{wrong}}
+                        </p>
+                        <p class="card-text">Total questions: {{total}}</p>
+                        <h5>All the best for next quiz!</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mx-4 mb-3 mb-lg-4">
+                  <a href="/course/{{pame.name}}/quiz"><button type="submit" class="btn btn-primary btn-lg">PLay
+                      Again</button></a>
+                  <a href="/course/{{pame.name}}"><button type="submit" class="btn btn-danger btn-lg">Quit</button></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="/static/pen.png" alt="login form" class="img-fluid"
+                style="border-radius: 1rem 0 0 5rem; margin-top: 4rem" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

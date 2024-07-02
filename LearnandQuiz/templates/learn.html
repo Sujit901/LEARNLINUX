@@ -1,0 +1,110 @@
+{% extends "index.html" %}
+
+{% block content %}
+<br>
+<div class="container" style="margin-right: 65%; color:white; position: -webkit-sticky; position: sticky; top: 6rem;">
+    <button type="button" class="btn btn-dark btn-lg px-4 shadow-lg mb-5 rounded" onclick="history.back()">Back</button>
+    {% for content in content %}
+    {% if user.is_staff %}
+    <a href="{% url 'surecontent' content.id %}"><button type="button"
+            class="btn btn-danger btn-lg px-4 shadow-lg mb-5 rounded">Delete</button></a>
+    <a href="{% url 'editcontent' content.id %}"><button type="button"
+            class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Edit</button></a>
+            {% endif %}
+    {% endfor %}
+</div>
+<br>
+{% if content %}
+<div class="container">
+    {% for content in content %}
+    <div class="container">
+        <img src="{{content.image.url}}" class="card-img-top shadow-lg mb-5 rounded" alt="Image" style="height: 15rem; width: 100%;">
+        <h1 class="card-title text-center shadow-lg mb-5 rounded"><b>{{content.contentname}}</b></h1>update on:<p>{{content.update}}</p>
+        <br>
+        <pre class="card-text" style="text-align: justify;">{{content.description}}</pre>
+        <br>
+        <h3><b>Note available here:</b></h3>
+        <a href="{{content.pdf.url}}" download><button type="button" class="btn btn-dark btn-lg px-4 shadow-lg mb-5 rounded"><i
+                    class="fa-solid fa-file-pdf fa-beat"></i> Download <i class="fa-solid fa-download fa-beat"
+                    style="color: #ffffff;"></i></button></a>
+        <br><br>
+        {% if content.videolink %}
+        <div class="container justify-content-center">
+            <h3 class="d-flex justify-content-center"><b>Please watch this video to understand more.</b></h3>
+            <div class="container d-flex justify-content-center">
+                <iframe class="shadow-lg mb-5 rounded" width="900" height="500" src="{{content.videolink}}" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <br>
+            <br>
+        </div>
+        <h3><b>You can find video here:</b></h3>
+        <a href="{{content.videolink}}"><button type="button" class="btn btn-dark btn-lg px-4 shadow-lg mb-5 rounded"><i
+                    class="fa-brands fa-youtube" style="color: #e01b24;"></i> Video</button></a>
+        <br>
+        {% endif %}
+        <br>
+        {% if content.references %}
+        <h3><b>References:</b></h3>
+        <pre>{{content.references}}</pre>
+        <br>
+        {% endif %}
+    </div>
+    <!-- <div class="container d-flex justify-content-center">
+            <a href="/comments/{{content.id}}"><button type="button" class="btn btn-primary btn-lg px-4">Comment</button></a>
+        </div> -->
+    {% endfor %}
+</div>
+</div>
+<br>
+<br>
+{% else %}
+<div class="card">
+    <div class="card-body justify-content-center" style="height: 758px; width: 100%;">
+        <div class="container d-flex justify-content-center">
+            <h1><b>No content available</b></h1>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <h2>Come back latter.</h2>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <a class="nav-link text-white" href="{% url 'course' pame.name %}"><button type="button"
+                        class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Ok</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<br>
+<br>
+<!-- {% with comments.count as total_comments %}
+        <h3 style="margin-left: 16%;"><b>{{ total_comments }} Comment{{ total_comments|pluralize }} :</b></h3>
+    {% endwith %}
+    {% for comment in comments %}
+    <div class="comment" style="margin-left: 16%;">
+        <p class="info">
+            Comment {{ forloop.counter }} by {{ comment.name }} {{ comment.created }}
+        </p>
+        {{ comment.body|linebreaks }}
+    </div>
+    {% empty %}
+        <p style="margin-left: 16%;">There are no comments yet.</p>
+    {% endfor %}
+    {% if new_comment %}
+        <h3 style="margin-left: 16%;">Your comment has been added.</h3>
+    {% else %}
+    <div class="container justify-content-center">
+        <h2 class="container" style="margin-left: 35%;">Add a new comment</h2>
+        <div class="container" style="margin-left: 35%;">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p style="margin-left: 10%;"><input type="submit" value="Add comment"></p>
+        </form>
+        </div>
+        </div>
+    {% endif %}-->
+{% endblock %}

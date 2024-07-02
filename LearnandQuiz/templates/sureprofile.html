@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="vh-100" style="background-color: rgb(234, 234, 234)">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 2rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <span class="border border-dark"
+                                        style="height: 25px; width: 25px; border-radius: 50%; background-color: rgb(234, 234, 234);"></span>
+                                </div>
+                                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Are you sure? <i
+                                        class="fa-solid fa-circle-exclamation fa-bounce" style="color: #f66151;"></i>
+                                </p>
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 g-5">
+                                    <a class="nav-link text-white mx-1" href="{% url 'deleteprofile' user.id %}"><button
+                                            type="button" class="btn btn-primary btn-lg px-4">Yes</button></a>
+                                    <button type="button" class="btn btn-danger btn-lg px-4 mx-md-4"
+                                        onclick="history.back()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/static/pen.png" alt="login form" class="img-fluid"
+                                style="border-radius: 1rem 0 0 5rem; margin-top: 4rem;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

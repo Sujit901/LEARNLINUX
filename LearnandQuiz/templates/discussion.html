@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h2 class="jumbotron">
+        <b>Currently active forums: {{count}}</b>
+        <form method="POST" action="{% url 'addInForum' %}">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded"
+                style="width:fit-content; padding: 4px; margin:10px;">Add
+                Discussion</button>
+        </form>
+    </h2>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container d-flex justify-content-center shadow-lg p-2 mb-5 bg-white rounded">
+                <h1 class="title">
+                    <b>Discussions</b>
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="hero is-primary">
+        <form action="{% url 'searchdiscuss' %}" method="GET">
+            <div class="input-group d-flex justify-content-center">
+                <div class="form-outline">
+                    <input type="search" id="form1" name="search" placeholder="Search Discussion" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </section>
+    <br>
+    <br>
+    {% if forums %}
+    <div class="card-columns" style="padding: 10px; margin: 20px;"></div>
+
+
+    {% for forum in forums %}
+
+    <div class="card box container shadow-lg mb-5 bg-white rounded">
+        <br>
+        <h5 class="card-title">
+            <a href='{{forum.link}}'>
+                <h3><b>{{forum.topic}}</b></h3>
+            </a>
+            <div class="card-body container">
+                <p style="text-align: justify;">{{forum.description}}</p>
+        </h5>
+        <hr>
+        <p><b>Created By:</b> {{forum.name}} on {{forum.date_created}}</p>
+        <p><b>Email:</b> {{forum.email}}</p>
+        {% if request.user.email == forum.email %}
+        <div>
+            <a href="{% url 'editforum' forum.id %}"><button class="btn btn-primary btn-lg"
+                    style="width:fit-content; padding: 4px; margin:10px;">Edit</button></a>
+            <a href="{% url 'sureforum' forum.id %}"><button class="btn btn-danger btn-lg"
+                    style="width:fit-content; padding: 4px; margin:10px;">Delete</button></a>
+        </div>
+        {% endif %}
+        <hr>
+        <h4><b>Discussions :</b></h4>
+        <div class="container">
+            <hr>
+            <div>
+                {% for i in discuss %}
+                {% if i.forum.id == forum.id %}
+                <p><b>By:</b> {{i.name}} on {{i.date}}</p>
+                <p><b>Email:</b> {{i.email}}</p>
+                <p><b>Reply:</b></p>
+                <p style="text-align: justify;">{{i.discuss}}</p>
+                {% if request.user.email == i.email %}
+                <div>
+                    <a href="{% url 'editdiscuss' i.id %}"><button class="btn btn-primary btn-lg"
+                            style="width:fit-content; padding: 4px; margin:10px;">Edit</button></a>
+                    <a href="{% url 'surediscuss' i.id %}"><button class="btn btn-danger btn-lg"
+                            style="width:fit-content; padding: 4px; margin:10px;">Delete</button></a>
+                </div>
+                {% endif %}
+                <hr>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <form method="POST" action="{% url 'addInDiscussion' forum.id %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg"
+                    style="width:fit-content; padding: 4px; margin:10px;">Reply</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endfor %}
+{% else %}
+<div class="card">
+    <div class="card-body justify-content-center" style="height: 758px; width: 100%;">
+        <div class="container d-flex justify-content-center">
+            <h1><b>No content available</b></h1>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <h2>Come back latter.</h2>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <a class="nav-link text-white" href="/"><button type="button"
+                        class="btn btn-primary btn-lg px-4 shadow-lg mb-5 rounded">Ok</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

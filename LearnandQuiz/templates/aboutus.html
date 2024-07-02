@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <section class="vh-150" style="background-color: rgb(234, 234, 234)">
+    <div class="container"
+      style="margin-right: 65%; color:white; position: -webkit-sticky; position: sticky; top: 6rem;">
+      <button type="button" class="btn btn-dark btn-lg px-4 shadow-lg mb-5 rounded" onclick="history.back()">Back</button>
+    </div>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-15">
+          <div class="card" style="border-radius: 2rem">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="border border-dark" style="
+                          height: 25px;
+                          width: 25px;
+                          border-radius: 50%;
+                          background-color: rgb(234, 234, 234);
+                        "></span>
+                  </div>
+                  <div class="px-4 py-5 my-5">
+                    <h2 style="text-align: justify;"><b>
+                      Welcome to Linux education, a web application dedicated to helping individuals learn and improve
+                      their skills in Linux operating systems.</b>
+                    </h2>
+                    <div>
+                      <p class="lead mb-4">
+                        <p class="fs-5" style="text-align: justify;">At Linux education, we believe that Linux is one of the most versatile and powerful operating
+                        systems available, and we want to make it accessible to everyone. Our goal is to provide a
+                        user-friendly and interactive learning platform that allows individuals to learn and practice
+                        Linux commands and concepts at their own pace.</p>
+
+                        <p class="fs-5" style="text-align: justify;">Our team of experienced Linux professionals has designed our web application to provide
+                        high-quality content that is both informative and engaging. Our content is regularly updated to
+                        ensure that we are providing the most current and relevant information possible.</p>
+
+                        <p class="fs-5" style="text-align: justify;">We understand that everyone learns differently, and that's why our web application offers a
+                        variety of learning tools and resources. From beginner-level tutorials to more advanced topics,
+                        we offer a comprehensive range of content to suit all levels of experience. Additionally, our
+                        web application includes hands-on exercises and simulations to provide practical experience in a
+                        safe and controlled environment.</p>
+
+                        <p class="fs-5" style="text-align: justify;">At Linux education, we are committed to creating a supportive and collaborative community of
+                        learners. Our web application includes forums and discussion groups, where individuals can share
+                        their experiences, ask questions, and get support from their peers and our team of experts.</p>
+
+                        <p style="text-align: justify;" class="fs-5"><b>Thank you for choosing Linux education as your learning platform. We are excited to help you build
+                        your Linux skills and achieve your goals.</b></p>
+                      </p>
+                      <!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button type="button" class="btn btn-primary btn-lg px-5 gap-3">
+                          Donate
+                        </button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="../static/logo-color.png" alt="login form" class="img-fluid"
+                  style="border-radius: 5rem 5rem 5rem 5rem; margin-top: 4rem" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

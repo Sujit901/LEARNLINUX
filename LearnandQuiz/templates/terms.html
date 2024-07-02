@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="vh-150" style="background-color: rgb(234, 234, 234)">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-15">
+                <div class="card" style="border-radius: 2rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <span class="border border-dark"
+                                        style="height: 25px; width: 25px; border-radius: 50%; background-color: rgb(234, 234, 234);"></span>
+                                </div>
+                                <div class="px-4 py-5 my-5">
+                                    <h1 class="display-5 fw-bold text-center">Welcome to our web application!</h1>
+                                    <div>
+                                        <p class="lead mb-4 mx-md-5" style="text-align: justify;">
+                                        <h2><b>By using our application, you agree to the following
+                                                terms and conditions:</b></h2>
+
+                                        <p class="fs-5" style="text-align: justify;"><b>Use of Content:</b> You may use
+                                            our content for personal, non-commercial
+                                            purposes only. Any other use, including but not limited to reproduction,
+                                            modification, distribution, or republication, is strictly prohibited
+                                            without our prior written consent.</p>
+
+                                        <p class="fs-5" style="text-align: justify;"><b>User Conduct:</b> You agree to
+                                            use our application only for lawful purposes
+                                            and in accordance with these terms and conditions. You may not use our
+                                            application in any manner that could damage, disable, overburden, or
+                                            impair our servers or networks, or interfere with any other party's use
+                                            and enjoyment of our application.</p>
+
+                                        <p class="fs-5" style="text-align: justify;"><b>Disclaimers:</b> Our application
+                                            is provided on an "as is" and "as
+                                            available" basis. We make no representations or warranties of any kind,
+                                            express or implied, as to the operation of our application or the
+                                            information, content, materials, or products included on our
+                                            application.</p>
+
+                                        <p class="fs-5" style="text-align: justify;"><b>Limitation of Liability:</b> To
+                                            the fullest extent permitted by applicable
+                                            law, we will not be liable for any damages of any kind arising from the
+                                            use of our application, including but not limited to direct, indirect,
+                                            incidental, punitive, and consequential damages.</p>
+
+                                        <p class="fs-5" style="text-align: justify;"><b>Modification of Terms:</b> We
+                                            reserve the right to modify these terms and
+                                            conditions at any time without prior notice. Your continued use of our
+                                            application after any such changes constitutes your acceptance of the
+                                            new terms and conditions.</p>
+
+
+                                        </p>
+                                        <h3 style="text-align: justify;">Thank you for using our web application!</h3>
+                                        <br>
+                                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                                            <a class="nav-link text-white"><button
+                                                    type="submit" value="signup"
+                                                    class="btn btn-primary btn-lg px-5 gap-3" onclick="history.back()">OK</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/static/logo-color.png" alt="login form" class="img-fluid"
+                                style="border-radius: 1rem 0 0 5rem; margin-top: 4rem;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

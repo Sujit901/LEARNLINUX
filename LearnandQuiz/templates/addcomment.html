@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <section class="vh-100" style="background-color: rgb(234, 234, 234)">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card " style="border-radius: 2rem;">
+
+            <div class="row g-0">
+              <div class=" d-flex col-md-50">
+
+                <div class="card card-body py-5 px-5" style="border-radius: 2rem; border-color: white;">
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="border border-dark" style="height: 25px; width: 25px; border-radius: 50%; background-color: rgb(234, 234, 234);"></span>
+                </div>
+                  <h1>Add Commenr</h1>
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <input style="color:white" class="fs-5 fw-bold bg-primary p-2 rounded-4" type="submit" name="Submit" value="Submit">
+                  </form>
+                </div>
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                  <img src="../static/pen.png" alt="login form" class="img-fluid"
+                    style="border-radius: 2rem 0 0 5rem; margin-top: 4rem;" />
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  {% endblock %}

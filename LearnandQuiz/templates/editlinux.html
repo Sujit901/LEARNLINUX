@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="vh-100" style="background-color: rgb(234, 234, 234)">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card " style="border-radius: 2rem;">
+
+          <div class="row g-0">
+            <div class=" d-flex col-md-50">
+
+              <div class="card card-body py-5 px-5" style="border-radius: 2rem; border-color: white;">
+                <div class="d-flex align-items-center mb-3 pb-1">
+                  <span class="border border-dark"
+                    style="height: 25px; width: 25px; border-radius: 50%; background-color: rgb(234, 234, 234);"></span>
+                </div>
+                <h1>Edit Linux</h1>
+                {% if success %}
+                <div> {{ success }} </div>
+                {% endif %}
+                <form action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-outline mb-4">
+                    <i class="fas fa-image fa-lg me-3 fa-fw"></i>
+                    <label class="form-label" for="form2Example27">Image<span style="color: red;">*</span></label><br>
+                    {{form.image}}
+                  </div>
+                  <div class="form-outline mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <label class="form-label" for="form2Example27">Name<span style="color: red;">*</span></label><br>
+                    {{form.name}}
+                  </div>
+                  <div class="form-outline mb-4">
+                    <i class="fa-solid fa-audio-description fa-lg me-3 fa-fw"></i>
+                    <label class="form-label" for="form2Example27">Description<span style="color: red;">*</span></label><br>
+                    {{form.description}}
+                  </div>
+                  <br>
+                  <div class="container d-flex justify-content-center">
+                    <button style="color:white" class="btn btn-primary btn-lg px-4" type="submit" name="Submit"
+                      value="Submit">Submit</button>
+                    <div class="container" style="margin-right: 60%;">
+                      <button type="button" class="btn btn-dark btn-lg px-4" onclick="history.back()">Back</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="/static/pen.png" alt="login form" class="img-fluid"
+                  style="border-radius: 2rem 0 0 5rem; margin-top: 4rem;" />
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock %}

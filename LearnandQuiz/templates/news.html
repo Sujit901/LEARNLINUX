@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block content %}
+<br>
+<div class="container" style="margin-right: 65%; color:white; position: -webkit-sticky; position: sticky; top: 6rem;">
+    <button type="button" class="btn btn-dark btn-lg px-4 shadow-lg mb-5 rounded" onclick="history.back()">Back</button>
+</div>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container d-flex justify-content-center shadow-lg p-2 mb-5 bg-white rounded">
+            <h1 class="title">
+                <b>Linux News</b>
+            </h1>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="rows">
+            <div class="column is-offset-16 is-10">
+                {% for title, image, description, url, publish in mylist %}
+                <br><br>
+                <div class="card shadow-lg mb-5 bg-white rounded">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-content">
+                                <div class="content">
+                                    <div class="d-flex">
+                                        <div>
+                                            <div class="card-head p-4">
+                                                <h1 class="title"><b>{{ title }}:</b>
+                                                    <h1>
+                                            </div>
+                                            <div class="card-body p-3"><span class="subtitle">{{ description }}<a
+                                                        href="{{ url }}">Read more</a></span></div>
+                                            <div class="card-footer p-3"><span><b>Published At:</b> {{ publish }}</span>
+                                            </div>
+                                        </div>
+
+
+                                        <img class="w-25 h-2 p-3" src="{{image}}" alt="image">
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
